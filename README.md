@@ -1,3 +1,4 @@
+
 # Employee Management System — End-to-End Testing
 
 Selenium WebDriver · Java · TestNG · Maven · Jira-style defect reports
@@ -7,10 +8,10 @@ plus a **Page-Object based automation framework** covering registration, login, 
 delete and role-based access — with manual test cases, regression suites, screenshots on failure, an HTML execution
 report and auto-generated Jira-style defect reports.
 
-> **No code changes needed.** The app is included in `/app`, drivers are downloaded automatically by Selenium Manager,
-> and all dependencies come from Maven.
+ **No code changes needed.** The app is included in `/app`, drivers are downloaded automatically by Selenium Manager,
+ and all dependencies come from Maven.
 
----
+
 
 ## 1. Prerequisites
 
@@ -150,3 +151,7 @@ git push -u origin main
 * Built functional, negative, boundary and security-oriented tests (account lockout, XSS/SQL-like input, salary masking, privilege-leakage checks) plus **smoke and regression suites** run through Maven.
 * Implemented **screenshot-on-failure**, ExtentReports execution reports and an **automatic Jira-style defect generator** (reproduction steps, priority/severity, Jira CSV import).
 * Authored a test plan, 73 documented manual test cases with traceability to automation, and a defect-report template.
+
+# Employee-Management-System-End-to-End-Testing
+Tools: Selenium WebDriver, Java, TestNG, Maven, Jira-style defect reports  Test employee registration, login, form validation, search, editing records, deletion, and role-based access. Include manual test cases, regression automation, screenshots on failures, and execution reports.
+
