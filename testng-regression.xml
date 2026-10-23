@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="EMS Regression Suite" verbose="1">
+  <test name="EMS Regression Tests">
+    <groups>
+      <run>
+        <include name="regression"/>
+        <exclude name="defect-demo"/>
+      </run>
+    </groups>
+    <packages>
+      <package name="com.ems.tests"/>
+    </packages>
+  </test>
+</suite>

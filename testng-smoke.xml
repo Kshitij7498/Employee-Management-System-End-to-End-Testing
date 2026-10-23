@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="EMS Smoke Suite" verbose="1">
+  <test name="EMS Smoke Tests">
+    <groups>
+      <run>
+        <include name="smoke"/>
+        <exclude name="defect-demo"/>
+      </run>
+    </groups>
+    <packages>
+      <package name="com.ems.tests"/>
+    </packages>
+  </test>
+</suite>

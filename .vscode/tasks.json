@@ -1,0 +1,11 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    { "label": "EMS: Run FULL suite", "type": "shell", "command": "mvn test", "group": "test", "problemMatcher": [] },
+    { "label": "EMS: Run SMOKE suite", "type": "shell", "command": "mvn test -DsuiteXmlFile=testng-smoke.xml", "group": "test", "problemMatcher": [] },
+    { "label": "EMS: Run REGRESSION suite", "type": "shell", "command": "mvn test -DsuiteXmlFile=testng-regression.xml", "group": "test", "problemMatcher": [] },
+    { "label": "EMS: Run NEGATIVE suite", "type": "shell", "command": "mvn test -DsuiteXmlFile=testng-negative.xml", "group": "test", "problemMatcher": [] },
+    { "label": "EMS: Run FULL suite (headless)", "type": "shell", "command": "mvn test -Dheadless=true", "group": "test", "problemMatcher": [] },
+    { "label": "EMS: Defect report DEMO (fails on purpose)", "type": "shell", "command": "mvn test -DsuiteXmlFile=testng-defect-demo.xml", "group": "test", "problemMatcher": [] }
+  ]
+}

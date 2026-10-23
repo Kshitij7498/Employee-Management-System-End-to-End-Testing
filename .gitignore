@@ -1,0 +1,20 @@
+target/
+reports/
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+*.class
+
+# Temporary recovery backup
+/ng/
+
+# Generated test output
+test-output/
+screenshots/
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example

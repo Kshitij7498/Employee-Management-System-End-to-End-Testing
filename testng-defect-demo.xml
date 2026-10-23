@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Intentionally FAILS: demonstrates screenshot-on-failure + Jira-style defect generation. -->
+<suite name="EMS Defect Report Demo" verbose="1">
+  <test name="Defect Demo (expected to fail)">
+    <groups>
+      <run>
+        <include name="defect-demo"/>
+      </run>
+    </groups>
+    <packages>
+      <package name="com.ems.tests"/>
+    </packages>
+  </test>
+</suite>

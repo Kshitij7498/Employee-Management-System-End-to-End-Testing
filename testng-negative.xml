@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="EMS Negative Test Suite" verbose="1">
+  <test name="EMS Negative Tests">
+    <groups>
+      <run>
+        <include name="negative"/>
+        <exclude name="defect-demo"/>
+      </run>
+    </groups>
+    <packages>
+      <package name="com.ems.tests"/>
+    </packages>
+  </test>
+</suite>

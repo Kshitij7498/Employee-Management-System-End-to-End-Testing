@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Employee Management System</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header id="appNav" class="navbar hidden">
+  <div class="brand">Employee Management System</div>
+  <nav>
+    <button id="navEmployees" type="button">Employees</button>
+    <button id="navUsers" type="button" class="hidden">Users</button>
+  </nav>
+  <div class="user-info">
+    <span id="welcomeText"></span>
+    <span id="roleBadge" class="badge"></span>
+    <button id="logoutBtn" type="button">Logout</button>
+  </div>
+</header>
+
+<main>
+  <!-- LOGIN -->
+  <section id="loginView" class="card narrow">
+    <h1>Login</h1>
+    <div id="loginSuccess" class="success"></div>
+    <div id="loginError" class="error-banner"></div>
+    <form id="loginForm" novalidate>
+      <label for="loginUsername">Username</label>
+      <input id="loginUsername" type="text" autocomplete="off">
+      <label for="loginPassword">Password</label>
+      <input id="loginPassword" type="password" autocomplete="off">
+      <button id="loginBtn" type="submit" class="primary">Login</button>
+    </form>
+    <p>New user? <button id="showRegisterLink" type="button" class="link">Register here</button></p>
+  </section>
+
+  <!-- REGISTER -->
+  <section id="registerView" class="card narrow hidden">
+    <h1>Register</h1>
+    <form id="registerForm" novalidate>
+      <label for="regFullName">Full Name</label>
+      <input id="regFullName" type="text" autocomplete="off">
+      <span class="field-error" id="regFullName-error"></span>
+
+      <label for="regEmail">Email</label>
+      <input id="regEmail" type="text" autocomplete="off">
+      <span class="field-error" id="regEmail-error"></span>
+
+      <label for="regUsername">Username</label>
+      <input id="regUsername" type="text" autocomplete="off">
+      <span class="field-error" id="regUsername-error"></span>
+
+      <label for="regPassword">Password</label>
+      <input id="regPassword" type="password" autocomplete="off">
+      <span class="field-error" id="regPassword-error"></span>
+
+      <label for="regConfirmPassword">Confirm Password</label>
+      <input id="regConfirmPassword" type="password" autocomplete="off">
+      <span class="field-error" id="regConfirmPassword-error"></span>
+
+      <button id="registerBtn" type="submit" class="primary">Register</button>
+    </form>
+    <p>Already registered? <button id="showLoginLink" type="button" class="link">Back to login</button></p>
+  </section>
+
+  <!-- DASHBOARD -->
+  <section id="dashboardView" class="hidden">
+    <h1>Employees</h1>
+    <div class="toolbar">
+      <input id="searchInput" type="text" placeholder="Search by ID, name, email, department or designation" autocomplete="off">
+      <select id="departmentFilter">
+        <option value="">All Departments</option>
+        <option>Engineering</option><option>HR</option><option>Finance</option><option>Marketing</option><option>Sales</option>
+      </select>
+      <button id="clearSearchBtn" type="button">Clear</button>
+      <button id="addEmployeeBtn" type="button" class="primary hidden">Add Employee</button>
+    </div>
+    <div id="employeeCount" class="muted"></div>
+    <table id="employeeTable">
+      <thead>
+        <tr>
+          <th>ID</th><th>Name</th><th>Email</th><th>Phone</th><th>Department</th><th>Designation</th>
+          <th id="thSalary">Salary</th><th>Joining Date</th><th id="thActions">Actions</th>
+        </tr>
+      </thead>
+      <tbody id="employeeTableBody"></tbody>
+    </table>
+    <div id="noResults" class="empty hidden">No employees found</div>
+  </section>
+
+  <!-- USERS (Admin only) -->
+  <section id="usersView" class="hidden">
+    <h1>User Accounts</h1>
+    <div id="usersCount" class="muted"></div>
+    <table id="usersTable">
+      <thead><tr><th>Username</th><th>Full Name</th><th>Email</th><th>Role</th></tr></thead>
+      <tbody id="usersTableBody"></tbody>
+    </table>
+  </section>
+</main>
+
+<!-- ADD / EDIT MODAL -->
+<div id="employeeModal" class="modal hidden">
+  <div class="modal-content">
+    <h2 id="modalTitle">Add Employee</h2>
+    <form id="employeeForm" novalidate>
+      <label for="empIdDisplay">Employee ID</label>
+      <input id="empIdDisplay" type="text" readonly>
+
+      <label for="empFirstName">First Name</label>
+      <input id="empFirstName" type="text" autocomplete="off">
+      <span class="field-error" id="empFirstName-error"></span>
+
+      <label for="empLastName">Last Name</label>
+      <input id="empLastName" type="text" autocomplete="off">
+      <span class="field-error" id="empLastName-error"></span>
+
+      <label for="empEmail">Email</label>
+      <input id="empEmail" type="text" autocomplete="off">
+      <span class="field-error" id="empEmail-error"></span>
+
+      <label for="empPhone">Phone</label>
+      <input id="empPhone" type="text" autocomplete="off">
+      <span class="field-error" id="empPhone-error"></span>
+
+      <label for="empDepartment">Department</label>
+      <select id="empDepartment">
+        <option value="">Select department</option>
+        <option>Engineering</option><option>HR</option><option>Finance</option><option>Marketing</option><option>Sales</option>
+      </select>
+      <span class="field-error" id="empDepartment-error"></span>
+
+      <label for="empDesignation">Designation</label>
+      <input id="empDesignation" type="text" autocomplete="off">
+      <span class="field-error" id="empDesignation-error"></span>
+
+      <label for="empSalary">Salary</label>
+      <input id="empSalary" type="number" step="1">
+      <span class="field-error" id="empSalary-error"></span>
+
+      <label for="empJoiningDate">Joining Date</label>
+      <input id="empJoiningDate" type="date">
+      <span class="field-error" id="empJoiningDate-error"></span>
+
+      <div class="actions">
+        <button id="saveEmployeeBtn" type="submit" class="primary">Save</button>
+        <button id="cancelEmployeeBtn" type="button">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- DELETE CONFIRMATION MODAL -->
+<div id="confirmModal" class="modal hidden">
+  <div class="modal-content small">
+    <h2>Confirm Delete</h2>
+    <p id="confirmMessage"></p>
+    <div class="actions">
+      <button id="confirmDeleteBtn" type="button" class="danger">Delete</button>
+      <button id="cancelDeleteBtn" type="button">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast" class="toast hidden" role="status"></div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
